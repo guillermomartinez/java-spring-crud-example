@@ -41,9 +41,9 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="java_demo1"/>
-  <table-filter match-name="curso"/>
+  <table-filter match-name="user"/>
   <table-filter match-name="profesor"/>
   <table-filter match-name="alumno_has_curso"/>
   <table-filter match-name="alumno"/>
-  <table-filter match-name="user"/>
+  <table-filter match-name="curso"/>
 </hibernate-reverse-engineering>
