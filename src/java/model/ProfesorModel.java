@@ -6,6 +6,8 @@
 package model;
 
 import entity.Profesor;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
@@ -18,7 +20,9 @@ public class ProfesorModel {
 		Session s = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			s.beginTransaction();
-			lst = s.createCriteria(Profesor.class).list();
+			String hql = "from Profesor as p order by p.nombre asc";
+			lst = s.createQuery(hql).list();
+			// lst = s.createCriteria(Profesor.class).list();
 			s.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -63,4 +67,25 @@ public class ProfesorModel {
 			s.getTransaction().rollback();
 		}
 	}
+	
+	public Profesor getProfesor(int id){
+          
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        Profesor p=new Profesor();
+        
+        try {
+            s.beginTransaction();
+            p=(Profesor) s.get(Profesor.class,id);
+            s.getTransaction().commit();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            s.getTransaction().rollback();
+        }
+          
+      
+      return p;
+      
+      }
 }

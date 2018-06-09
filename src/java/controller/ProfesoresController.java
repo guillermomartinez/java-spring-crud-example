@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -40,6 +41,36 @@ public class ProfesoresController {
 	public ModelAndView add(@ModelAttribute(value="Profesor") Profesor p){
 		ProfesorModel model=new ProfesorModel();
         model.create(p);        
+		return new ModelAndView("redirect:/profesores/list.htm");
+	}
+	
+	@RequestMapping(value="profesores/edit.htm",method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam(value="id") int id){		
+		int identificador = Integer.parseInt(String.valueOf(id));
+		ProfesorModel model= new ProfesorModel();		
+		Profesor p = model.getProfesor(identificador);				
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("profesores/edit");				
+		mav.addObject("p", p);
+		return mav;
+	}
+	
+	@RequestMapping(value="profesores/update.htm",method = RequestMethod.POST)
+	public ModelAndView update(@ModelAttribute(value="Profesor") Profesor p){		
+		ProfesorModel model=new ProfesorModel();
+		Profesor aux= new Profesor();
+        aux=model.getProfesor(p.getId());
+        aux.setNombre(p.getNombre());        
+        model.edit(aux);        
+		return new ModelAndView("redirect:/profesores/list.htm");
+	}
+	
+	@RequestMapping(value="profesores/delete.htm",method = RequestMethod.GET)
+	public ModelAndView delete(@RequestParam(value="id") int id){		
+		int identificador = Integer.parseInt(String.valueOf(id));
+		ProfesorModel model= new ProfesorModel();		
+		Profesor p = model.getProfesor(identificador);				
+		model.remove(p);
 		return new ModelAndView("redirect:/profesores/list.htm");
 	}
 }
