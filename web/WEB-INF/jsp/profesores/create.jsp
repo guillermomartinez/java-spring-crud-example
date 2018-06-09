@@ -25,23 +25,18 @@
 					</div>
 				</div>
 			</div>
-			<table class="table table-condensed table-bordered table-hovered">
-				<tr>
-					<th width="4%">Id</th>
-					<th width="15%">Acciones</th>
-					<th>Nombre</th>					
-				</tr>
-				<c:forEach items="${lst}" var="item">
-					<tr>
-						<td>${item.id}</td>
-						<td>
-							<a class="btn btn-info" href="${pageContext.request.contextPath}/profesores/edit.htm?id=${item.id}">Editar</a>
-							<a class="btn btn-danger" href="${pageContext.request.contextPath}/profesores/delete.htm?id=${item.id}" onclick="return confirm('Esta seguro de eliminar?')">Eliminar</a>
-						</td>
-						<td>${item.nombre}</td>													
-					</tr>
-				</c:forEach>
-			</table>
+			<h3>Crear</h3>
+			<f:form action="add.htm" modelAttribute="Profesor" method="post">				
+				<div class="form-group">
+					<label for="nombreid">Nombre :</label>
+					<input class="form-control" type="text" id="nombreid" name="nombre" value=""/>
+				</div>
+				<div class="form-group">
+					<input class="btn btn-primary" type="submit" value="Guardar"/>
+				</div>
+
+				
+			</f:form>			
 		</div>
 
     </body>
