@@ -24,31 +24,40 @@
 					</div>
 				</div>
 			</div>
-			<h2>Profesores</h2>
+			<h2>Cursos</h2>
 			<div class="row form-group">
 				<div class="col-sm-12">	
 					<div class="navbar navbar-default">
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
-								<li><a href="${pageContext.request.contextPath}/profesores/list.htm">Listado</a></li>
-								<li><a href="${pageContext.request.contextPath}/profesores/create.htm">Crear</a></li>					
+								<li><a href="${pageContext.request.contextPath}/cursos/list.htm">Listado</a></li>
+								<li><a href="${pageContext.request.contextPath}/cursos/create.htm">Crear</a></li>					
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-			<h3>Editar</h3>
-			<f:form action="update.htm" modelAttribute="Profesor" method="post">				
-				<input type="hidden" name="id" value="${p.id}"/>
+			<h3>Crear</h3>
+			<f:form action="add.htm" method="post" modelAttribute="Curso">				
+				<div class="form-group">	
+					<label for="profesorid">Profesor :</label>
+					<f:select path="profesor.id" class="form-control" >  
+						<c:forEach items="${profesores}" var="item">
+							<option value="${item.getId()}">
+								<c:out value="${item.getNombre()}" />
+							</option>
+						</c:forEach>
+					</f:select>
+				</div>
 				<div class="form-group">
 					<label for="nombreid">Nombre :</label>
-					<input class="form-control" type="text" id="nombreid" name="nombre" value="${p.nombre}"/>
+					<input class="form-control" type="text" id="nombreid" name="nombre" value=""/>
 				</div>
 				<div class="form-group">
 					<input class="btn btn-primary" type="submit" value="Guardar"/>
 				</div>
 
-				
+
 			</f:form>			
 		</div>
 

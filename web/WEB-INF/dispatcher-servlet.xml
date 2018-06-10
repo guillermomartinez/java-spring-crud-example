@@ -21,6 +21,7 @@
 			<props>
 				<prop key="index.htm">indexController</prop>
 				<prop key="profesores/list.htm">profesoresController</prop>
+				<prop key="cursos/list.htm">cursosController</prop>
 			</props>
 		</property>
 	</bean>
@@ -34,6 +35,7 @@
 	The index controller.
 	-->
 	<bean name="profesoresController" class="controller.ProfesoresController" />
+	<bean name="cursosController" class="controller.CursosController" />
 	<bean name="indexController"
 		  class="org.springframework.web.servlet.mvc.ParameterizableViewController"
 		  p:viewName="index" />

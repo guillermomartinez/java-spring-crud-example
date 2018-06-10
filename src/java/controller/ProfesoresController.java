@@ -45,10 +45,10 @@ public class ProfesoresController {
 	}
 	
 	@RequestMapping(value="profesores/edit.htm",method = RequestMethod.GET)
-	public ModelAndView edit(@RequestParam(value="id") int id){		
+	public ModelAndView edit(@RequestParam(value="id") int id, @ModelAttribute(value="Profesor") Profesor p){		
 		int identificador = Integer.parseInt(String.valueOf(id));
 		ProfesorModel model= new ProfesorModel();		
-		Profesor p = model.getProfesor(identificador);				
+		p = model.getProfesor(identificador);				
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("profesores/edit");				
 		mav.addObject("p", p);

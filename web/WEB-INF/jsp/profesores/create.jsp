@@ -12,6 +12,18 @@
     </head>
     <body>
         <div class="container">
+			<div class="row form-group">
+				<div class="col-sm-12">	
+					<div class="navbar navbar-default">
+						<div id="navbar" class="navbar-collapse collapse">
+							<ul class="nav navbar-nav">
+								<li><a href="${pageContext.request.contextPath}/profesores/list.htm">Profesores</a></li>
+								<li><a href="${pageContext.request.contextPath}/cursos/list.htm">Cursos</a></li>					
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
 			<h2>Profesores</h2>
 			<div class="row form-group">
 				<div class="col-sm-12">	

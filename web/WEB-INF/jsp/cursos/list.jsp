@@ -24,32 +24,38 @@
 					</div>
 				</div>
 			</div>
-			<h2>Profesores</h2>
+			<h2>Cursos</h2>
 			<div class="row form-group">
 				<div class="col-sm-12">	
 					<div class="navbar navbar-default">
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
-								<li><a href="${pageContext.request.contextPath}/profesores/list.htm">Listado</a></li>
-								<li><a href="${pageContext.request.contextPath}/profesores/create.htm">Crear</a></li>					
+								<li><a href="${pageContext.request.contextPath}/cursos/list.htm">Listado</a></li>
+								<li><a href="${pageContext.request.contextPath}/cursos/create.htm">Crear</a></li>					
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-			<h3>Editar</h3>
-			<f:form action="update.htm" modelAttribute="Profesor" method="post">				
-				<input type="hidden" name="id" value="${p.id}"/>
-				<div class="form-group">
-					<label for="nombreid">Nombre :</label>
-					<input class="form-control" type="text" id="nombreid" name="nombre" value="${p.nombre}"/>
-				</div>
-				<div class="form-group">
-					<input class="btn btn-primary" type="submit" value="Guardar"/>
-				</div>
-
-				
-			</f:form>			
+			<table class="table table-condensed table-bordered table-hovered">
+				<tr>
+					<th width="4%">Id</th>
+					<th width="15%">Acciones</th>
+					<th>Nombre</th>					
+					<th>Profesor</th>					
+				</tr>
+				<c:forEach items="${lst}" var="item">
+					<tr>
+						<td>${item[0].id}</td>
+						<td>
+							<a class="btn btn-info" href="${pageContext.request.contextPath}/cursos/edit.htm?id=${item[0].id}">Editar</a>
+							<a class="btn btn-danger" href="${pageContext.request.contextPath}/cursos/delete.htm?id=${item[0].id}" onclick="return confirm('Esta seguro de eliminar?')">Eliminar</a>
+						</td>
+						<td>${item[0].nombre}</td>													
+						<td>${item[1].nombre}</td>													
+					</tr>
+				</c:forEach>
+			</table>
 		</div>
 
     </body>
